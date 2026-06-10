@@ -1,0 +1,52 @@
+# AI 陪伴助手 PWA 版配置
+
+# === LLM 大脑 ===
+llm:
+  api_key: "sk-74dd4ddc553849928427919e9ea3f17f"
+  base_url: "https://api.deepseek.com/v1"
+  model: "deepseek-chat"
+  temperature: 0.7
+  max_tokens: 1024
+
+# === 语音 ===
+voice:
+  # 后端 TTS 引擎（服务端合成语音返回给前端）
+  tts_engine: "edge_tts"
+  voice_name: "zh-CN-XiaoxiaoNeural"
+  rate: "+0%"
+
+# === 记忆 ===
+memory:
+  context_rounds: 20
+  max_long_term_facts: 200
+
+# === 自主判断 ===
+autonomy:
+  enabled: true
+  think_interval: 300
+  proactive: true
+  proactive_min_interval: 1800
+
+# === 性格 ===
+personality:
+  name: "小超"
+  style: "利落、像朋友聊天、短句直接"
+  catchphrase: "搞定收工！"
+  system_prompt: |
+    你叫{name}，是一个AI陪伴助手。
+    风格：{style}
+    口头禅：{catchphrase}
+    
+    核心行为准则：
+    1. 像真正的朋友一样交流，不要客服腔
+    2. 主动关心用户，但不过度
+    3. 记住用户说过的重要信息，下次自然提起
+    4. 有自己的判断和主见，该反对就反对
+    5. 回复简洁，不说废话
+
+# === 服务器 ===
+server:
+  host: "0.0.0.0"
+  port: 8000
+  # 访问密码（留空则不需要登录）
+  password: ""
